@@ -71,9 +71,14 @@ intrinsic IwasawaLambda(p::RngIntElt,m::RngIntElt : prec := 20) -> RngIntElt
 	if m mod p eq 0 then
 		return "*";
 	end if;
+	printf "\n\nChecking trivial cases...\n";
+	printf "	Creating KK = CylotomicField(m)...\n";
 	KK := CyclotomicField(m);
+	printf "	Creating ZKK...\n";
 	ZKK := Integers(KK);
+	printf "	Factoring p in ZKK...\n";
 	pFactorization := Factorization(p*ZKK);
+	printf "	Computing RelativeClassNumber(m)...\n";
 	rcn := RelativeClassNumber(m);
 	if ((m mod 4) ne 2) and (#pFactorization eq 1) and ((rcn mod p) ne 0) then
 		printf "\np = %o, m = %o, rcn = %o, #primes = %o\n",p,m,rcn,#pFactorization;
