@@ -5,7 +5,7 @@ intrinsic RelativeClassNumber(m::RngIntElt) -> RngIntElt
   G := FullDirichletGroup(m);
   rel_class_num := 1;
   for i in {1..#Elements(G)} do
-      chi := Elements(G)[i];
+    chi := Elements(G)[i];
     if IsOdd(chi) then
       rel_class_num *:= (-1/2)*(Bernoulli(1,chi));
     end if;
