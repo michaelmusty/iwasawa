@@ -1,0 +1,461 @@
+\documentclass[12pt]{amsart}
+
+\usepackage{amssymb,amsthm,amsmath,amsxtra}
+\usepackage{fullpage}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{array}
+\usepackage{lscape}
+\usepackage{chngcntr}
+\usepackage{booktabs}
+\usepackage{tikz}
+
+\numberwithin{equation}{section}
+\renewcommand{\thefigure}{\arabic{figure}}
+
+\theoremstyle{plain}
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{lem}[equation]{Lemma} 
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{prob}[equation]{Problem}
+\newtheorem{ques}[equation]{Question}
+\newtheorem{conj}[equation]{Conjecture}
+\newtheorem*{cor*}{Corollary}
+\newtheorem*{prob*}{Problem}
+\newtheorem*{thm*}{Theorem}
+\newtheorem*{thma*}{Theorem A}
+\newtheorem*{thmb*}{Theorem B}
+\newtheorem*{thmc*}{Theorem C}
+
+\theoremstyle{definition}
+\newtheorem{defn}[equation]{Definition}
+\newtheorem{alg}[equation]{Algorithm}
+\newtheorem{exm}[equation]{Example}
+
+\theoremstyle{remark}
+\newtheorem{rmk}[equation]{Remark}
+
+\newenvironment{enumalph}
+{\begin{enumerate}\renewcommand{\labelenumi}{\textnormal{(\alph{enumi})}}}
+{\end{enumerate}}
+
+\newenvironment{enumalgalph}
+{\begin{enumerate}\renewcommand{\labelenumii}{\alph{enumii}.}}
+{\end{enumerate}}
+
+\newenvironment{enumroman}
+{\begin{enumerate}\renewcommand{\labelenumi}{\textnormal{(\roman{enumi})}}}
+{\end{enumerate}}
+
+\newenvironment{enumalg}
+{\begin{enumerate}\renewcommand{\labelenumi}{\arabic{enumi}.}}
+{\end{enumerate}}
+
+\newcommand{\defi}[1]{\textsf{#1}}
+\newcommand{\teich}{Teichm\"{u}ller }
+
+\setlength{\hfuzz}{4pt}
+
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\ddiv}{div}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\impart}{Im}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\N}{N}
+\DeclareMathOperator{\opdiv}{div}
+\DeclareMathOperator{\nrd}{nrd}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Out}{Out}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\repart}{Re}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\(P)SL}{(P)SL}
+\DeclareMathOperator{\PSU}{PSU}
+
+\newcommand{\C}{\mathbf C}
+\newcommand{\F}{\mathbf F}
+\newcommand{\HH}{\mathbf H}
+\newcommand{\PP}{\mathbf P}
+\newcommand{\Q}{\mathbf Q}
+\newcommand{\R}{\mathbf R}
+\newcommand{\Z}{\mathbf Z}
+\newcommand{\Qbar}{\overline{\mathbf Q}}
+\newcommand{\kbar}{\overline{k}}
+\newcommand{\Qab}{{\mathbf Q}_{\textup{ab}}}
+
+\newcommand{\newt}{\mu}
+
+\newcommand{\Belyi}{Bely\u{\i}}
+
+\newcommand{\fraka}{\mathfrak{a}}
+\newcommand{\frakd}{\mathfrak{d}}
+\newcommand{\frakn}{\mathfrak{n}}
+\newcommand{\frakM}{\mathfrak{M}}
+\newcommand{\frakN}{\mathfrak{N}}
+\newcommand{\frakp}{\mathfrak{p}}
+\newcommand{\frakP}{\mathfrak{P}}
+\newcommand{\frakq}{\mathfrak{q}}
+
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calO}{\mathcal{O}}
+
+\newcommand{\psmod}[1]{~(\textup{\text{mod}}~{#1})}
+\newcommand{\legen}[2]{\left(\frac{#1}{#2}\right)}
+
+\newcommand{\quat}[2]{\displaystyle{\biggl(\frac{#1}{#2}\biggr)}}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+
+\newcommand{\gunder}{\underline{g}}
+\newcommand{\tunder}{\underline{t}}
+\newcommand{\Cunder}{\underline{C}}
+
+\DeclareMathOperator{\opchar}{char}
+
+\newcommand{\Deltabar}{\overline{\Delta}}
+\newcommand{\gammabar}{\overline{\gamma}}
+\newcommand{\Gammabar}{\overline{\Gamma}}
+\newcommand{\Fbar}{\overline{F}}
+\newcommand{\Bbar}{\overline{B}}
+\newcommand{\calObar}{\overline{\mathcal{O}}}
+\newcommand{\frakpbar}{\overline{\mathfrak{p}}}
+\newcommand{\frakdbar}{\overline{\mathfrak{d}}}
+
+\newcommand{\zetabar}{\overline{\zeta}}
+
+\newcommand{\sbwk}{{}_{\textup{wkrat}}}
+\newcommand{\sbnum}{{}_{\textup{num}}}
+\newcommand{\sbrat}{{}_{\textup{rat}}}
+\newcommand{\sbtr}{{}_{\textup{tr}}}
+\newcommand{\sbtors}{{}_{\textup{tors}}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ns}{\operatorname{ns}}
+
+\newcommand{\prodprime}{\sideset{}{^{'}}{\prod}}
+
+\newcommand{\Bhat}{\widehat{B}}
+\newcommand{\Fhat}{\widehat{F}}
+\newcommand{\PGamma}{\mathrm{P}\Gamma}
+\newcommand{\calOhat}{\widehat{\mathcal O}}
+\newcommand{\gammahat}{\widehat{\gamma}}
+\newcommand{\alphahat}{\widehat{\alpha}}
+\newcommand{\ahat}{\widehat{a}}
+\newcommand{\Zhat}{\widehat{\mathbb Z}}
+\newcommand{\ZFhat}{\widehat{\mathbb Z}_F}
+
+\newcommand{\mm}[1]{{\color{blue} \sf MM: [#1]}}
+
+\setcounter{tocdepth}{1}
+
+\begin{document}
+
+\title{The Iwasawa $\lambda$-invariant of $\Q(\zeta_m)$}
+
+\author{Michael Musty}
+\address{Department of Mathematics, Dartmouth College, Kemeny Hall, Hanover, NH 03755, USA}
+\email{michaelmusty@gmail.com}
+
+\date{}
+
+\begin{abstract}
+
+\end{abstract}
+
+\maketitle 
+\tableofcontents
+
+\section{Background}
+
+\section{Description of the Method}
+
+\section{Tables and Conjectures}
+
+\section{$\Z_p$-extensions and Iwasawa invariants}
+Let $p$ be an odd prime. \mm{$p=2$ case...Ferrero and Kida}. Let $K$ be a number field and let $K^+$ denote the maximal real subfield of $K$. Let $\Z_p,\Q_p$ denote the $p$-adic ring and field respectively. Let $\zeta_m$ be a primitive $m$-th root of unity.
+\begin{defn}
+A \defi{$\Z_p$-extension} of $K$ is an infinite tower of fields
+$$
+K = K_0\subset K_1\subset\cdots\subset K_n\subset\cdots
+$$
+such that for each $n\geq 0$, $K_n$ is a cyclic extension of degree $p^n$ over $K$.
+\end{defn}
+\begin{rmk}
+Then $K_\infty := \cup_n K_n$ has Galois group $(\Z_p,+)$.
+\end{rmk}
+\begin{exm}[Cyclotomic $\Z_p$-extension of $K$]
+Let $\mu_{p^\infty} = \{\text{$p$-power roots of unity}\}$. Then there is a unique $\Z_p$-extension contained in $K(\mu_{p^\infty})$ called the \defi{cyclotomic $\Z_p$-extension}.
+\begin{figure}[ht]
+\begin{center}
+\begin{tikzpicture}[node distance = 3.25cm]
+\node at (0,0) (K) {$K$};
+\node (Kp1) [above left of=K]{$K(\zeta_p)$};
+\node (Kp2) [above right of=Kp1]{$K(\zeta_{p^2})$};
+\node (Kp3) [above right of=Kp2]{$K(\zeta_{p^3})$};
+\node[node distance=1.7cm] (Kp4) [above right of=Kp3]{};
+\node[node distance=0.9cm] (Kp5) [above right of=Kp4]{};
+\node[node distance=1.7cm] (Kpn) [above right of=Kp5]{$K(\zeta_{p^{n+1}})$};
+\node[node distance=1.7cm] (Kpnplus1) [above right of=Kpn]{};
+\node[node distance=0.9cm] (Kpnplus2) [above right of=Kpnplus1]{};
+\node (K1) [above right of=K]{$K_1$};
+\node (K2) [above right of=K1]{$K_2$};
+\node [node distance=1.7cm] (K3) [above right of=K2]{};
+\node [node distance=0.9cm] (K4) [above right of=K3]{};
+\node [node distance=1.7cm] (Kn) [above right of=K4]{$K_n$};
+\node [node distance=1.7cm] (Knplus1) [above right of=Kn]{};
+\node [node distance=0.9cm] (Knplus2) [above right of=Knplus1]{};
+\draw (K) to node [auto] {$p-1$} node {} (Kp1);
+\draw (Kp1) to node [auto] {$p$} node {} (Kp2);
+\draw (Kp2) to node [auto] {$p$} node {} (Kp3);
+\draw (Kp3) to node [auto] {$p$} node {} (Kp4);
+\draw[thick,loosely dotted] (Kp4)--(Kp5);
+\draw (Kp5) to node [auto] {$p$} node {} (Kpn);
+\draw (Kpn) to node [auto] {$p$} node {} (Kpnplus1);
+\draw[thick,loosely dotted] (Kpnplus1)--(Kpnplus2);
+\draw (K) to node [swap,auto] {$p$} node {} (K1);
+\draw (K1) to node [swap,auto] {$p$} node {} (K2);
+\draw (K2) to node [swap,auto] {$p$} node {} (K3);
+\draw[thick,loosely dotted] (K3)--(K4);
+\draw (K4) to node [swap,auto] {$p$} node {} (Kn);
+\draw (Kn) to node [swap,auto] {$p$} node {} (Knplus1);
+\draw[thick,loosely dotted] (Knplus1)--(Knplus2);
+\draw (K1) to node [auto] {$p-1$} node {} (Kp2);
+\draw (K2) to node [auto] {$p-1$} node {} (Kp3);
+\draw (Kn) to node [auto] {$p-1$} node {} (Kpn);
+\end{tikzpicture}
+\end{center}
+\caption{The cyclotomic $\Z_p$-extension $K=K_0\subset K_1\subset K_2\subset\cdots\subset K_n\subset\cdots$.}
+\label{fig:iwasawatower}
+\end{figure}
+\end{exm}
+\begin{thm}\cite{iwasawa}
+In an arbitrary $\Z_p$-extension of $K$, for each $n\geq 0$, let $e_n$ denote the highest power of $p$ dividing the class number of $K_n$. There exist integers $\lambda,\mu,\nu$ depending on $K_\infty/K$ only, such that for all $n\geq n_0$, we have
+$$
+e_n = \lambda n+\mu p^n+\nu.
+$$
+\end{thm}
+\begin{rmk}
+When considering the cyclotomic $\Z_p$-extension of $K$, it is common to denote these \defi{Iwasawa invariants} for $K,p$ by $\lambda_p(K), \mu_p(K), \nu_p(K)$.
+\end{rmk}
+\begin{rmk}
+In general $n_0$ is small.
+\end{rmk}
+\begin{thm}\label{thm:fw}\cite{ferrerowashington}
+If $K$ is abelian, then $\mu = 0$. So as we go up one level in the tower, $e_n$ increases by $\lambda$.
+\end{thm}
+\begin{rmk}
+Iwasawa conjectured that if $K_\infty$ is the cyclotomic $\Z_p$-extension of $K$ (not necessarily abelian), then $\mu=0$. This has been proven for CM fields in \url{http://arxiv.org/abs/1409.3114} but remains open in general.
+\end{rmk}
+\begin{rmk}
+Iwasawa constructed examples of non-cyclotomic $\Z_p$-extensions where $\mu>0$. 
+\end{rmk}
+\begin{defn}
+For $p,K,K^+$ as above, we define
+$$
+\lambda_p^-(K) := \lambda_p(K)-\lambda_p(K^+).
+$$
+\end{defn}
+\begin{conj}\cite{greenberg}
+For $K$ a totally real field, $\lambda_p(K)=\mu_p(K) = 0$. Thus, at least conjecturally, $\lambda_p^-(K) = \lambda_p(K)$.
+\end{conj}
+\mm{reasons to believe this...it's Greenberg...}
+\begin{conj}\label{conj:pvaries}
+If we let $K$ be fixed, then as $p$ varies over all primes $\lambda_p(K)$ is bounded.
+\end{conj}
+\mm{analogy with the Jacobian variety of a curve over a finite field....ask JV}
+\begin{rmk}
+For $K = \Q$, Conjecture \ref{conj:pvaries} is true since we have $\lambda = 0$ for all $p$. In all other cases, nothing is known.
+\end{rmk}
+\begin{conj}\label{conj:pfixed}
+If $p$ is a fixed prime and $K$ varies over every imaginary quadratic field, $\lambda_p(K)$ is unbounded.
+\end{conj}
+\begin{rmk}
+In \cite{sands},\cite{fukuda}, and \cite{pari} there are extensive computations supporting Conjecture \ref{conj:pfixed}, but the conjecture has only been proven for $p=2$. 
+\end{rmk}
+\begin{thm}\cite{ferrero}
+Let $d>2$ be a squarefree integer. Then
+$$
+\lambda_2(\Q(\sqrt{-d})) = -1+\sum_{p\mid d, p\neq 2} 2^{\ord_2(p^2-1)-3}.
+$$
+\end{thm}
+
+\mm{other motivation that could go here...}
+
+\section{Computing the $\lambda$-invariant}
+Let $p$ be an odd prime and $K = \Q(\zeta_m)$.
+\mm{without loss we can assume conductor of $K$ (in this case $m$) is not divisible by $p^2$ otherwise $K$ contains a subfield of conductor not divisible by $p^2$ with cyclotomic $\Z_p$-extension equal to that of $K$.}
+Let $\chi$ be an odd character on $\Gal(K/\Q)\cong (\Z/m\Z)^\times$ with $p^2\nmid f_\chi$. Let $\Q(\chi)$ be the field containing the character values and $\mathfrak{p}$ a prime above $p$ in $\Q(\chi)$. Completing $\Q(\chi)$ we obtain a finite extension of $\Q_p$ denoted $\Q_p(\chi)$. Let $\mathcal{O}_\chi$ denote the ring of integers in $\Q_p(\chi)$.
+Let $\omega$ denote the \defi{\teich character}.
+\mm{$\omega:(\Z/p\Z)^\times\to\Z_p^\times$ defined by $\omega(a) = $ unique $(p-1)$st root of unity in $\Z_p^\times$ (Hensel) such that $\omega(a) = a\pmod{p}$. $\omega$ is primitive, of conductor $p$, odd, order $p-1$...in particular $\chi\omega$ is even.}
+Let $\psi$ be a character on $\Z_p$ with $f_\psi = p^{n+1}$ with $n\geq 1$. 
+\mm{then $\psi$ is a character of the second kind with order $p^n$ generating the $n$-th level $\Q_n\subseteq\Q(\zeta_{p^{n+1}})$ in the cyclotomic $\Z_p$-extension of $\Q$.}
+Let $\zeta = \psi(1+p)$ so that $\zeta^{p^n}=1$.
+\mm{we can define $p^n$ distinct characters in this way.}
+\begin{thm}\label{thm:main}\cite{iwasawa2}
+There is a unique $G(T,\chi\omega)\in\mathcal{O}_\chi[[T]]$ such that
+$$
+G(\zeta(1+p)^{-s}-1,\chi\omega) = L_p(s,\chi\omega\psi)
+$$
+for all $s = 0,-1,-2,\dots$.
+\end{thm}
+\mm{$L_p(s,\chi)$ is a $p$-adic analog of the complex $L$-function $L(s,\chi)$ ``interpolating" the values of $L(s,\chi)$ at $s=0,-1,-2,\dots$. $L_p(s,\chi)$ was first constructed in \cite{kubota}.}
+We can evaluate $L_p(0,\chi\omega\psi)$ as follows. Let $f = f_{\chi\omega\psi}$. Then
+$$
+L_p(0,\chi\omega\psi) = \frac{1}{f}\sum_{a=1}^f\chi(a)\psi(a)a = -B_{1,\chi\psi}
+$$
+\mm{there is an $\omega^{-1}$ in the values of $L_p(s,\chi)$...}
+\begin{defn}
+Let $G(T,\chi\omega) = \sum a_iT^i$ as in Theorem \ref{thm:main}. Define $\lambda_p(\chi)$ to be the minimum $i$ such that $a_i$ does not lie in the unique maximal ideal of $\mathcal{O}_\chi$.
+\mm{i.e. minimum $i$ such that the valuation of $a_i$ in $\mathcal{O}_\chi = 0$. i.e. the minimum $i$ such that $a_i$ is a unit in $\mathcal{O}_\chi$.}
+\mm{such an $i$ exists by Theorem \ref{thm:fw}.}
+\end{defn}
+\begin{thm}\label{thm:acnf}
+$$
+\lambda_p^-(\Q(\zeta_m)) = \sum_{\chi}\lambda_p(\chi)
+$$
+where the sum is over the odd characters associated to $K$ \mm{except if $\chi = \omega^{-1}$}.
+\end{thm}
+\noindent
+For each odd $\chi$ associated to $K$ we have
+\begin{align*}
+L_p(0,\chi\omega\psi) &= G(\zeta-1,\chi\omega)\\
+&= a_0+a_1(\zeta-1)+a_2(\zeta-2)^2+\cdots.
+\end{align*}
+\mm{the coefficients of this power series don't depend on $\psi$...this only changes where the coefficients live. In $\Q(\zeta_{p^n})$, $(p) = (\zeta_{p^n}-1)^{\varphi(p^n)}$ allowing us to detect $\lambda$ as follows...}
+Let $\lambda = \lambda_p(\chi)$ and 
+\begin{align*}
+\mathfrak{p} &= \text{prime above $p$ in $\mathcal{O}_\chi$}\\
+\mathfrak{P} &= \text{prime above $p$ in $\mathcal{O}_\chi(\zeta)$}.
+\end{align*}
+Since $a_0,\cdots,a_{\lambda-1}$ have nonzero $\mathfrak{p}$ valuation and $\mathfrak{p}$ is totally ramified in $\Q_p(\chi)(\zeta)$, these coefficients have large $\mathfrak{P}$ valuation as well. But
+$$
+\ord_\mathfrak{P}(a_\lambda(\zeta-1)^\lambda) = \lambda
+$$
+so that
+$$
+\ord_\mathfrak{P}(L_p(0,\chi\omega\psi)) = \lambda_p(\chi).
+$$
+Modifying the techniques for computing $\lambda_p(\Q(\sqrt{-d}))$ in \cite{sands} for cyclotomic fields, we can compute $\lambda_p^-(\Q(\zeta_m))$ in $O(p^2m^4\log^2 p)$ bit operations. Similar computations appear in \cite{C2} and our computations agree \mm{we made 2 corrections to these values...}.
+\begin{exm}
+Let $p = 11$ and $K = \Q(\zeta_{19})$. \mm{$p$ splits into $6$ primes in $K$}. Then there are $9$ odd characters $\chi,\chi^3,\chi^5,\dots,\chi^{17}$ for $K$. Then $\lambda_p(\chi)=0$ except for $\chi^3,\chi^9,\chi^{15}$. For $\chi^3$ we have
+$$
+G(T,\chi^3\omega) = 0+(2\cdot 3\cdot 19-2^3\cdot 5\cdot 19\zeta^3)T+\cdots
+$$
+so that $\lambda_{11}(\chi^3) = 1$. For $\chi^9$ we have
+$$
+G(T,\chi^9\omega) = 0+(-2^2\cdot 11\cdot 19)T+(-2^3\cdot 19\cdot 29)T^2+\cdots
+$$
+so that $\lambda_{11}(\chi^9) = 2$. For $\chi^{15}$ we have
+$$
+G(T,\chi^{15}\omega) = 0+(2^3\cdot 5\cdot 19\zeta^3-2\cdot 17\cdot 19)T+\cdots
+$$
+so that $\lambda_{11}(\chi^{15}) = 1$. Thus
+$$
+\lambda_{11}^-(\Q(\zeta_{19})) = 1+2+1 = 4.
+$$
+Since $-19\equiv 1\pmod{4}$, $\Q(\sqrt{-19})\subseteq\Q(\zeta_{19})$ \mm{$p$ splits into $2$ primes in this quadratic}. The subfield $\Q(\sqrt{-19})$ corresponds to the character $\chi^9$ and we saw that $\lambda_{11}(\chi^9) = 2$. Indeed, when we check tables in \cite{sands} we see that $\lambda_{11}(\Q(\sqrt{-19})) = 2$.
+\mm{thus we can compute $\lambda_p(K)$ for $K\subseteq\Q(\zeta_m)$ by simply computing $\lambda_p(\chi)$ for the corresponding characters on $(\Z/m\Z)^\times$.}
+\end{exm}
+
+\begin{conj}
+If $p$ and $\ell$ odd primes and $\ell\equiv 1\pmod{p}$, the $p\mid\lambda_p(\Q(\zeta_\ell))$.
+\end{conj}
+\mm{other conjectures...maybe some tables...}
+
+\begin{comment}
+\subsection{Preliminaries}
+We now restrict ourselves to the setting $p\neq 2$ and $K = \Q(\zeta_m)$ \mm{exactly what restrictions on $m$?}.
+\begin{defn}
+A complex \defi{Dirichlet character} $\chi$ is a group homomorphism
+$$
+\chi:(\Z/m\Z)^\times\to\C^\times.
+$$
+\end{defn}
+
+\mm{$\chi$ defines a periodic function on $\Z$ and takes values in $\S^1$}.
+
+\begin{defn}
+$\chi$ is \defi{even}, \defi{odd} if $\chi(-1) = 1,-1$.
+\end{defn}
+\begin{defn}
+Let $f_\chi$ be the least divisor of $m$ such that $\chi$ factors through the natural map
+$$
+(\Z/m\Z)^\times\to(\Z/f_\chi\Z)^\times.
+$$
+Then $f_\chi$ is called the \defi{conductor} of $\chi$. $\chi$ is called \defi{primitive} if $\chi$ is defined modulo its conductor.
+\end{defn}
+
+Let $\chi,\psi$ be primitive Dirichlet characters with conductors $f_\chi,f_\psi$. Then
+\begin{align*}
+\chi\psi:(Z/\lcm(f_\chi,f_\psi)\Z)^\times&\to\C^\times\\
+a&\mapsto\chi(a)\psi(a)
+\end{align*}
+defines a Dirichlet character.
+\mm{the resulting character need not be primitive (e.g. take $\psi = \chi^{-1}$ so that $f_{\chi\psi} = 1$), so we define $\chi\psi$ to be the primitive character inducing $\chi(a)\psi(a)$ of conductor dividing $\lcm(f_\chi,f_\psi)$.}
+
+\begin{defn}
+Let $G = \Gal(K/\Q)\cong (\Z/m\Z)^\times$. Let $\widehat{G}$ be the group of Dirichlet characters $(\Z/m\Z)^\times\to\C^\times$. Then $\widehat{G}\cong (\Z/m\Z)^\times$ and we say these are the characters \defi{associated to $K$}.
+\end{defn}
+
+\noindent The characters in $\widehat{G}$ take values in $\Q(\zeta_{\varphi(m)})$. Denote this field by $\Q(\chi)$. Let $\mathfrak{p}$ be a prime above $p$ in $\Q(\chi)$. For $\alpha\in\Q(\chi)$ define
+$$
+\abs{\alpha} = \begin{cases} c^{\ord_\mathfrak{p}(\alpha)}&\text{if $\alpha\neq 0$}\\0&\text{if $\alpha=0$}\end{cases}
+$$
+with $c\in (0,1)$ such that $\abs{p} = p^{-1}$. Call this the $\mathfrak{p}$-adic absolute value on $\Q(\chi)$. Completing $\Q(\chi)$ with respect to this absolute value we get a finite extension of $\Q_p$ which we denote $\Q_p(\chi)$. Let $\mathcal{O}$ be the ring of integers in $\Q_p(\chi)$. Then every $\chi\in\widehat{G}$ takes all values in $\mathcal{O}$.
+
+\begin{defn}
+The \defi{\teich character} is the unique primitive odd character of conductor $p$ and order $p-1$
+$$
+\omega:(\Z/p\Z)^\times\to\Z_p^\times
+$$
+where $\omega(a)$ is the unique $(p-1)$st root of unity in $\Z_p^\times$ such that $\omega(a)\equiv a\pmod{p}$.
+\end{defn}
+
+\mm{some explanation, Hensel's lemma, definition over $\F_q$...}
+
+\subsection{$p$-adic $L$-functions}
+
+\mm{cite DFKS and Greenberg...}
+\noindent
+Let $p$ odd, $K=\Q(\zeta_m)$ and $\mathcal{O}$ as above. Let $\chi\in\widehat{G}$ with $\chi$ odd and $p^2\nmid f_\chi$ \mm{first kind for $p$}. Let $\omega$ the \teich character. Then $\chi\omega$ is even. Let $\psi$ be a character on $\Z_p$ of conductor $p^{r+1}$ and order $p^r$ with $r\geq 1$ \mm{second kind for $p$}. Let
+$$
+\zeta = \psi(1+p)
+$$
+so that $\zeta^{p^r} = 1$ \mm{then $\psi$ generates the $r$-th level $\Q_r\subseteq\Q(\zeta_{p^{r+1}})$ in the cyclotomic $\Z_p$-extension of $\Q$}.
+
+\begin{thm}\cite{iwasawa2}
+There is a unique $G(T,\chi\omega)\in \mathcal{O}[[T]]$ such that
+$$
+G(\zeta-1,\chi\omega) = L_p(0,\chi\omega\psi).
+$$
+\end{thm}
+\begin{rmk}
+$L_p(s,\chi\omega)$ is a 
+\end{rmk}
+\end{comment}
+
+\bibliographystyle{amsplain}
+\bibliography{iwasawa022615}
+
+\end{document} 	
