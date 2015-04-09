@@ -55,7 +55,7 @@ intrinsic LambdaChi(chi::GrpDrchElt,pp::RngOrdIdl,QQ_chi::FldCyc,z_chi::FldCycEl
     end for;
     time2 := Cputime();
     printf "OK done. That took %o seconds.\n",time2-time1;
-    coeff := QQ_chi!coeff;
+    printf "    coeff a_%o = %o\n",m,coeff;
     valuation := Valuation(coeff,pp);
     printf "    The valuation of coeff a_%o at pp equals %o.\n",m,valuation;
     if valuation eq 0 then
@@ -63,17 +63,15 @@ intrinsic LambdaChi(chi::GrpDrchElt,pp::RngOrdIdl,QQ_chi::FldCyc,z_chi::FldCycEl
       return m;
     end if;
   end for;
+end intrinsic;
 
 intrinsic IwasawaLambda(p::RngIntElt,m::RngIntElt : prec := 20) -> RngIntElt
   {}
   ZZ := IntegerRing();
-  /*
   if m mod p eq 0 then
-    print "p divides m";
     return "*";
   end if;
-  */
-  printf "\nChecking trivial cases...\n";
+  printf "\n\nChecking trivial cases...\n";
   printf "	Creating KK = CylotomicField(m)...\n";
   KK := CyclotomicField(m);
   printf "	Creating ZKK...\n";
@@ -140,6 +138,7 @@ intrinsic IwasawaLambda(p::RngIntElt,m::RngIntElt : prec := 20) -> RngIntElt
     lambda +:= val;
     printf "  Therefore we add %o to IwasawaLambda to get %o.\n",val,lambda;
   end for;
+  printf "\n\n";
   printf "\n\n";
   printf "The Iwasawa lambda minus invariant for QQ(zeta_%o) and p = %o is %o.\n\n",m,p,lambda;
   return lambda;
