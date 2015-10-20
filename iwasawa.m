@@ -1,3 +1,12 @@
+/*
+ ______
+/\__  _\
+\/_/\ \/    __  __  __     __      ____     __     __  __  __     __
+   \ \ \   /\ \/\ \/\ \  /'__`\   /',__\  /'__`\  /\ \/\ \/\ \  /'__`\
+    \_\ \__\ \ \_/ \_/ \/\ \L\.\_/\__, `\/\ \L\.\_\ \ \_/ \_/ \/\ \L\.\_
+    /\_____\\ \___x___/'\ \__/.\_\/\____/\ \__/.\_\\ \___x___/'\ \__/.\_\
+    \/_____/ \/__//__/   \/__/\/_/\/___/  \/__/\/_/ \/__//__/   \/__/\/_/
+*/
 intrinsic RelativeClassNumber(m::RngIntElt) -> RngIntElt
   {given m defining QQ(zeta_m) return h^- the relative class number of QQ(zeta_m)}
   ZZ := IntegerRing();
@@ -7,7 +16,7 @@ intrinsic RelativeClassNumber(m::RngIntElt) -> RngIntElt
   for i in {1..#Elements(G)} do
     chi := Elements(G)[i];
     if IsOdd(chi) then
-      rel_class_num *:= (-1/2)*(Bernoulli(1,chi));
+      rel_class_num *:= (-1/2)*(Bernoulli(1, chi));
     end if;
   end for;
   rel_class_num *:= 2*m;
@@ -17,9 +26,9 @@ intrinsic RelativeClassNumber(m::RngIntElt) -> RngIntElt
   return ZZ!rel_class_num;
 end intrinsic;
 
-intrinsic Lpn(i::RngIntElt,p::RngIntElt,n::RngIntElt,prec::RngIntElt) -> RngIntElt
+intrinsic Lpn(i::RngIntElt, p::RngIntElt, n::RngIntElt, prec::RngIntElt) -> RngIntElt
   {Given i an integer such that ZZp!a is a unit in ZZp, p an odd prime, n a positive integer, and prec the working precision, return modified logarithm}
-  ZZp := pAdicRing(p,prec);
+  ZZp := pAdicRing(p, prec);
   ZZ := IntegerRing();
   FFpn := FiniteField(p^n);
   val := ZZ!(FFpn!(ZZ!(Log(ZZp!(i))/p)));
@@ -30,7 +39,7 @@ intrinsic Lpn(i::RngIntElt,p::RngIntElt,n::RngIntElt,prec::RngIntElt) -> RngIntE
   end if;
 end intrinsic;
 
-intrinsic LambdaChi(chi::GrpDrchElt,pp::RngOrdIdl,QQ_chi::FldCyc,z_chi::FldCycElt,p::RngIntElt,prec::RngIntElt) -> RngIntElt
+intrinsic LambdaChi(chi::GrpDrchElt, pp::RngOrdIdl, QQ_chi::FldCyc, z_chi::FldCycElt, p::RngIntElt, prec::RngIntElt) -> RngIntElt
   {returns lambda_chi for a particular chi...}
   ZZ := IntegerRing();
   ZK := Integers(QQ_chi);
@@ -43,12 +52,12 @@ intrinsic LambdaChi(chi::GrpDrchElt,pp::RngOrdIdl,QQ_chi::FldCyc,z_chi::FldCycEl
     time1 := Cputime();
     coeff := 0;
     for i in {1..p^2} do
-      if GreatestCommonDivisor(i,p) eq 1 then
+      if GreatestCommonDivisor(i, p) eq 1 then
         innersum := 0;
         for j in {0..(f0-1)} do
           innersum +:= j*chi(i+j*p^2);
         end for;
-        binom :=  Binomial(-Lpn(i,p,1,prec),m);
+        binom :=  Binomial(-Lpn(i, p, 1, prec), m);
         innersum *:= binom;
         coeff +:= innersum;
       end if;
@@ -56,7 +65,7 @@ intrinsic LambdaChi(chi::GrpDrchElt,pp::RngOrdIdl,QQ_chi::FldCyc,z_chi::FldCycEl
     time2 := Cputime();
     printf "OK done. That took %o seconds.\n",time2-time1;
     printf "    coeff a_%o = %o\n",m,coeff;
-    valuation := Valuation(coeff,pp);
+    valuation := Valuation(coeff, pp);
     printf "    The valuation of coeff a_%o at pp equals %o.\n",m,valuation;
     if valuation eq 0 then
       printf "    Since ord_pp(a_%o) = %o, lambda_chi = %o.\n",m,valuation,m;
@@ -65,7 +74,7 @@ intrinsic LambdaChi(chi::GrpDrchElt,pp::RngOrdIdl,QQ_chi::FldCyc,z_chi::FldCycEl
   end for;
 end intrinsic;
 
-intrinsic IwasawaLambda(p::RngIntElt,m::RngIntElt : prec := 20) -> RngIntElt
+intrinsic IwasawaLambda(p::RngIntElt, m::RngIntElt : prec := 20) -> RngIntElt
   {}
   ZZ := IntegerRing();
   if m mod p eq 0 then
@@ -131,7 +140,7 @@ intrinsic IwasawaLambda(p::RngIntElt,m::RngIntElt : prec := 20) -> RngIntElt
   lambda := 0;
   printf "Now compute lambda_chi for each of the above chi...\n\n";
   for i in {1..#elts} do
-    val := LambdaChi(elts[i],pp1,QQ_chi,z_chi,p,prec);
+    val := LambdaChi(elts[i], pp1, QQ_chi, z_chi, p, prec);
     if Type(val) eq MonStgElt then
       return "**";
     end if;
