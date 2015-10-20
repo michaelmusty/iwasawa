@@ -145,7 +145,7 @@ intrinsic IwasawaLambda(p::RngIntElt, m::RngIntElt : prec := 20) -> RngIntElt
       return "**";
     end if;
     lambda +:= val;
-    printf "  Therefore we add %o to IwasawaLambda to get %o.\n",val,lambda;
+    printf "  Therefore we add %o to IwasawaLambda to get %o\n thus far.",val,lambda;
   end for;
   printf "\n\n";
   printf "\n\n";
