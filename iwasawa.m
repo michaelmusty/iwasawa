@@ -77,9 +77,9 @@ end intrinsic;
 intrinsic IwasawaLambda(p::RngIntElt, m::RngIntElt : prec := 20) -> RngIntElt
   {}
   ZZ := IntegerRing();
-  if m mod p eq 0 then
-    return "*";
-  end if;
+//  if m mod p eq 0 then
+//    return "*";
+//  end if;
   printf "\n\nChecking trivial cases...\n";
   printf "	Creating KK = CylotomicField(m)...\n";
   KK := CyclotomicField(m);
