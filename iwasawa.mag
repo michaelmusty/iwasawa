@@ -117,7 +117,6 @@ intrinsic IwasawaLambda(p::RngIntElt, m::RngIntElt : prec := 20) -> RngIntElt
   printf "\n\n";
   all_chi_elts := Elements(Gchi);
 
-
   printf "First check that every character on Gal(QQ(zeta_%o)/QQ) is of the first kind for p...",m;
   for i in {1..#all_chi_elts} do
     if (Conductor(all_chi_elts[i]) mod p^2) eq 0 then
