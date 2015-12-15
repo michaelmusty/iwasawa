@@ -1,0 +1,9 @@
+d := 31;
+db := TransitiveGroupDatabase(d);
+G := db[10];
+sigma0 := G.1;
+sigma1 := G.2;
+sigmaoo := (sigma1*sigma0)^-1;
+sigma := [sigma0, sigma1, sigmaoo];
+gamma := TriangleSubgroup(sigma);
+TriangleDrawDessin(gamma, 7 : filename := "~/iwasawa/dessin-examples/31.tex");
