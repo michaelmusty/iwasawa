@@ -1,9 +1,19 @@
-d := 31;
+d := 29;
 db := TransitiveGroupDatabase(d);
-G := db[10];
-sigma0 := G.1;
-sigma1 := G.2;
-sigmaoo := (sigma1*sigma0)^-1;
-sigma := [sigma0, sigma1, sigmaoo];
-gamma := TriangleSubgroup(sigma);
-TriangleDrawDessin(gamma, 7 : filename := "~/iwasawa/dessin-examples/31.tex");
+for a in {1..#db} do
+  G := db[a];
+  if #Generators(G) eq 2 then
+    sigma0 := G.1;
+    sigma1 := G.2;
+    sigmaoo := (sigma1*sigma0)^-1;
+    sigma := [sigma0, sigma1, sigmaoo];
+    aa := Order(sigma0);
+    bb := Order(sigma1);
+    cc := Order(sigmaoo);
+    if 1/aa+1/bb+1/cc lt 1 then
+      gamma := TriangleSubgroup(sigma);
+      file := Sprintf("~/iwasawa/dessin-examples/%o-%o.tex", d, a);
+      TriangleDrawDessin(gamma, 7 : filename := file);
+    end if;
+  end if;
+end for;
