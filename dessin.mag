@@ -1,4 +1,4 @@
-d := 29;
+d := 24;
 db := TransitiveGroupDatabase(d);
 for a in {1..#db} do
   G := db[a];
